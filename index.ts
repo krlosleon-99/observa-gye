@@ -66,6 +66,11 @@ async function startServer() {
     });
   });
 
+  // Ruta de prueba para la raíz
+app.get('/', (req, res) => {
+  res.send('¡El servidor está funcionando correctamente!');
+});
+
   // Exponer io para su uso en controladores
   app.set("socketio", io);
 
