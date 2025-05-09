@@ -1,10 +1,13 @@
 const config = {
   database: {
-      host: process.env.HOST_DB,
-      port: parseInt(process.env.PORT_DB || "5433"), // Asegúrate de que use PORT_DB
-      database: process.env.NAME_DB,
-      user: process.env.USER_DB,
-      password: process.env.PASSWORD_DB,
+    host: process.env.HOST_DB,
+    port: parseInt(process.env.PORT_DB || "5432"), // Cambia el puerto predeterminado a 5432
+    database: process.env.NAME_DB,
+    user: process.env.USER_DB,
+    password: process.env.PASSWORD_DB,
+    ssl: {
+      rejectUnauthorized: false, // Permite conexiones SSL sin verificar el certificado
+    },
   },
   server: {
     port: 2500, // Puerto del servidor
@@ -25,8 +28,7 @@ const config = {
     auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_CERT_URL,
     client_x509_cert_url: process.env.FIREBASE_CLIENT_CERT_URL,
   },
-  };
-  console.log('FIREBASE_PRIVATE_KEY:', process.env.FIREBASE_PRIVATE_KEY);
-  
-  export default config;
-  
+};
+console.log('FIREBASE_PRIVATE_KEY:', process.env.FIREBASE_PRIVATE_KEY);
+
+export default config;
